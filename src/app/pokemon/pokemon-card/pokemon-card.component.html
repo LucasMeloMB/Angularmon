@@ -1,0 +1,19 @@
+<div class="card {{ 'bg-color-' + getPrincipalType(types) + '-light' }}">
+  <div class="card__header">
+    <h2 class="color-white">Nº {{ id }}</h2>
+    <!-- <h2 class="color-white">`${numberFormat(pokemon?.id)}`</h2> -->
+  </div>
+  <div class="card__container row">
+    <div class="card__info col-sm-6">
+      <h2 class="color-white">{{ name }}</h2>
+      <span
+        *ngFor="let type of types"
+        class="color-white {{ 'bg-color-' + type.type.name }}"
+        >{{ type.type.name }}</span
+      >
+    </div>
+    <div class="card__img col-sm-6">
+      <img [src]="sprites.front_default" [alt]="name" height="150" />
+    </div>
+  </div>
+</div>
