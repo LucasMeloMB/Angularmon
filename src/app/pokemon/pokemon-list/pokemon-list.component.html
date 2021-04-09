@@ -1,4 +1,4 @@
-<div class="margin_list">
+<div class="page">
   <div class="row justify-content-center">
     <mat-form-field appearance="outline">
       <mat-label>Nome do Pokemon</mat-label>
@@ -26,6 +26,7 @@
         [name]="pokemon.name"
         [types]="pokemon.types"
         [sprites]="pokemon.sprites"
+        (click)="navigate(pokemon.name)"
       ></app-pokemon-card>
     </div>
   </div>
@@ -37,6 +38,7 @@
       [name]="searchPokemon.name"
       [types]="searchPokemon.types"
       [sprites]="searchPokemon.sprites"
+      (click)="navigate(searchPokemon.name)"
     ></app-pokemon-card>
   </div>
 

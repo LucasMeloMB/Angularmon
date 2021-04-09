@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PokemonList } from 'src/app/model/pokemon.list';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -22,7 +23,11 @@ export class PokemonListComponent implements OnInit {
   loadingButton: boolean;
   searchState: boolean;
   private maxOffset = 898;
-  constructor(private service: PokemonService, private snackBar: MatSnackBar) {
+  constructor(
+    private service: PokemonService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
     this.offset = 0;
     this.limit = 51;
     this.showMore = false;
@@ -93,5 +98,10 @@ export class PokemonListComponent implements OnInit {
         }
       );
     }
+  }
+
+  navigate(pokemonName: string): void {
+    console.log(pokemonName);
+    this.router.navigate(['pokemon', pokemonName]);
   }
 }

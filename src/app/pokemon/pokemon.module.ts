@@ -7,9 +7,10 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 
 @NgModule({
-  declarations: [PokemonListComponent, PokemonCardComponent],
+  declarations: [PokemonListComponent, PokemonCardComponent, PokemonDetailComponent],
   imports: [
     CommonModule,
     MatButtonModule,

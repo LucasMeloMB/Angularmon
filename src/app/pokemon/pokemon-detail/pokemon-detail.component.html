@@ -1,0 +1,29 @@
+<div class="page">
+  <div class="container">
+    <div class="name">
+      <p>{{ pokemonDetail.name }}</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-3 justify-content-center">
+        <div class="name col-sm-6">
+          <p>Normal</p>
+        </div>
+        <img
+          [src]="pokemonDetail.sprites.front_default"
+          [alt]="pokemonDetail.name"
+          height="150"
+        />
+      </div>
+      <div class="col-sm-3 justify-content-center">
+        <div class="name col-sm-8">
+          <p>Shiny</p>
+        </div>
+        <img
+          [src]="pokemonDetail.sprites.front_shiny"
+          [alt]="pokemonDetail.name"
+          height="150"
+        />
+      </div>
+    </div>
+  </div>
+</div>
