@@ -2,14 +2,21 @@
   <div class="row justify-content-center">
     <mat-form-field appearance="outline">
       <mat-label>Nome do Pokemon</mat-label>
-      <input matInput formControlName="pokemonName" placeholder="Pikachu" />
+      <input
+        matInput
+        [formControl]="search"
+        placeholder="Pikachu"
+        (keydown.enter)="getSearchPokemon()"
+      />
     </mat-form-field>
     <div class="red_button">
-      <button mat-raised-button color="warn" (click)="getList()">Buscar</button>
+      <button mat-raised-button color="warn" (click)="getSearchPokemon()">
+        Buscar
+      </button>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="!searchState">
     <div
       class="col-sm-6 col-md-6 col-lg-4 col-xl-4"
       *ngFor="let pokemon of pokemonList"
@@ -20,37 +27,27 @@
         [types]="pokemon.types"
         [sprites]="pokemon.sprites"
       ></app-pokemon-card>
-
-      <!-- <div
-        class="card {{
-          'bg-color-' + getPrincipalType(pokemon.types) + '-light'
-        }}"
-      >
-        <div class="card__header">
-          <h2 class="color-white">Nº {{ pokemon?.id }}</h2>
-        </div>
-        <div class="card__container row">
-          <div class="card__info col-sm-6">
-            <h2 class="color-white">{{ pokemon?.name }}</h2>
-            <span
-              *ngFor="let type of pokemon.types"
-              class="color-white {{ 'bg-color-' + type.type.name }}"
-              >{{ type.type.name }}</span
-            >
-          </div>
-          <div class="card__img col-sm-6">
-            <img
-              [src]="pokemon.sprites?.front_default"
-              [alt]="pokemon.name"
-              height="150"
-            />
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 
+  <div class="row col-sm-6 col-md-6 col-lg-4 col-xl-4" *ngIf="searchState">
+    <app-pokemon-card
+      *ngIf="showCard"
+      [id]="searchPokemon.id"
+      [name]="searchPokemon.name"
+      [types]="searchPokemon.types"
+      [sprites]="searchPokemon.sprites"
+    ></app-pokemon-card>
+  </div>
+
   <div class="text-center" *ngIf="showMore">
-    <button [disabled]="loading" mat-raised-button color="warn" (click)="getList()">Mais</button>
+    <button
+      [disabled]="loadingButton"
+      mat-raised-button
+      color="warn"
+      (click)="getList()"
+    >
+      Mais
+    </button>
   </div>
 </div>
